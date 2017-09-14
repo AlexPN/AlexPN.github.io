@@ -8,10 +8,11 @@ h1 {
 }
 
 p {
-	font-size: 14px;
+	font-size: 20px;
 }
 
-ul.ul_v {
+/*horizontal navigation bar*/
+ul.ul_h {
     list-style-type: none;
     margin: 12px;
     padding: 0;
@@ -19,12 +20,39 @@ ul.ul_v {
     background-color: #101010;
 }
 
-ul.ul_h {
+/*vertical navigation bar*/
+ul.ul_v {
+    list-style-type: none;
+    margin: 12px;
+    padding: 0;
+    overflow: hidden;
+	position: fixed;
+    background-color: #c1c1c1;
+	border-radius: 6px;
+}
 
+div.navmargin {
+	padding:1px 16px;
+	height:1000px;
 }
 
 li {
 	float: left;
+}
+
+li.vnav {
+	float: none;
+}
+
+li.vnav a {
+	display: block;
+	color: black;
+	text-align: left;
+	padding: 8px 8px;
+	text-decoration: none;
+	font-family: verdana;
+	font-size: 14px;
+	border-radius: 6px;
 }
 
 li a, .dropelement {
@@ -38,6 +66,9 @@ li a, .dropelement {
 
 li a:hover, .dropdown:hover .dropelement {
     background-color: #3a58b8;
+}
+li.vnav a:hover {
+    background-color: #dddddd;
 }
 
 li.dropdown {
@@ -58,7 +89,7 @@ li.dropdown {
 }
 
 .dropdown-content a {
-	color: d0d0d0;
+	color: #d0d0d0;
 	padding: 12px 16px;
 	font-size: 14px;
 	text-decoration: none;
@@ -73,3 +104,62 @@ li.dropdown {
 .dropdown-content a:hover {
 	background-color: #425eb8;
 }
+
+
+
+
+div.gallery {
+	margin: 10px;
+	background-color: #aaaaaa;
+	float: left;
+	width: 256px;
+	border-radius: 3px;
+	box-shadow: 0px 6px 12px 0px rgba(0,0,0,0.1);
+}
+
+div.gallery:hover {
+	box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2), 0px 8px 8px 0px rgba(0,0,0,0.15);
+}
+
+div.gallery img {
+	width: 100%;
+	height: auto;
+}
+
+div.title {
+	padding: 8px;
+	text-align: center;
+	font-size: 14px;
+	font-family: tahoma;
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+}
+
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 248px;
+    background-color: #101010;
+    color: #d0d0d0;
+    text-align: left;
+	font-size: 12px;
+	font-family: tahoma;
+    border-radius: 4px;
+    padding: 4px 4px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -128px;
+	opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
+
