@@ -7,6 +7,21 @@ h1 {
 	font-family: verdana;
 }
 
+h2 {
+	text-align: center;
+	font-family: verdana;
+	font-variant: small-caps;
+	padding-bottom: 32px;
+}
+
+
+h3 {
+	text-align: left;
+	font-family: verdana;
+	font-variant: small-caps;
+	padding-top: 32px;
+}
+
 p {
 	font-size: 20px;
 }
@@ -24,16 +39,18 @@ ul.ul_h {
 ul.ul_v {
     list-style-type: none;
     margin: 12px;
-    padding: 0;
+	max-width: 192px;
+    top: 128px;
+	padding: 0;
     overflow: hidden;
-	position: fixed;
+	position: absolute;
     background-color: #c1c1c1;
 	border-radius: 6px;
 }
 
 div.navmargin {
-	padding:1px 16px;
-	height:1000px;
+	padding:2px 256px;
+	height:2000px;
 }
 
 li {

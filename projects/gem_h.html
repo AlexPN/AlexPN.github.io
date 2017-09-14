@@ -27,16 +27,34 @@
 	<li style="float:right;background-color:#131d3d;"><a href="../gallery.html">Gallery</a></li>
 </ul>
 
-<ul class="ul_v">
-	<li class="vnav"><a href="#">Preliminary Considerations</a></li>
-	<li class="vnav"><a href="#">Initial Design</a></li>
+<ul class="ul_v" id="vertical_nav">
+	<li class="vnav"><a href="#PreliminaryConsiderations">Preliminary Considerations</a></li>
+	<li class="vnav"><a href="#InitialDesign">Initial Design</a></li>
 	<li class="vnav"><a href="#">Materials</a></li>
 </ul>
 
+<script>
+window.onscroll = function() {sticknavbar()};
+
+function sticknavbar() {
+    if (document.body.scrollTop > 128 || document.documentElement.scrollTop > 128) {
+        document.getElementById("vertical_nav").style.position = "fixed";
+		document.getElementById("vertical_nav").style.top = "0px";
+    } else {
+        document.getElementById("vertical_nav").style.position = "absolute";
+		document.getElementById("vertical_nav").style.top = "128px";
+    }
+}
+</script>
+
 <div class="navmargin">
-<p>
-blah
-</p>
+	<h2>German Equatorial Mount (Hardware)</h2>
+	<h3 id="PreliminaryConsiderations">Preliminary Considerations</h3>
+	<hr>
+		<p>blah</p>
+	<h3 id="InitialDesign">Initial Design</h3>
+	<hr>
+		<p>words</p>
 </div>
 </body>
 </html>
