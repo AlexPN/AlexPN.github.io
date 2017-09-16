@@ -1,5 +1,5 @@
 body {
-	background-color: lightgrey;
+	background-color: #efefef;
 }
 
 h1 {
@@ -23,7 +23,8 @@ h3 {
 }
 
 p {
-	font-size: 20px;
+	font-size: 14px;
+	font-family: arial;
 }
 
 /*horizontal navigation bar*/

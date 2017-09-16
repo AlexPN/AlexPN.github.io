@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../css/pagestyle.css">
+</head>
+<body>
+<h1>alexpn</h1>
+<ul class="ul_h">
+	<li><a href="../index.html">Home</a></li>
+	<li class="dropdown">
+		<a class="active dropelement" href="../projects.html">Projects</a>
+		<div class="dropdown-content">
+			<a href="../projects/gem_h.html">German Equatorial Mount (Hardware)</a>
+			<a href="../projects/gem_s.html">German Equatorial Mount (Software)</a>
+			<a href="#">Filter Wheel</a>
+			<a href="#">Peltier Controller</a>
+		</div>
+	</li>
+	<li class="dropdown">
+		<a class="dropelement" href="../tutorials.html">Guides &amp Tutorials</a>
+		<div class="dropdown-content">
+			<a href="gettingstarted.html">Getting Started in Astronomy</a>
+			<a href="#">Comparison of Telescope Types</a>
+		</div>
+	</li>
+	<li><a href="../contact.html">Contact</a></li>
+	<li style="float:right;background-color:#131d3d;"><a href="../gallery.html">Gallery</a></li>
+</ul>
+
+<ul class="ul_v" id="vertical_nav">
+	<li class="vnav"><a href="#Start">The Beginning</a></li>
+	<li class="vnav"><a href="#TheThreeQuestions">The Three Questions</a></li>
+	<li class="vnav"><a href="#">(wip)</a></li>
+</ul>
+
+<script>
+window.onscroll = function() {sticknavbar()};
+
+function sticknavbar() {
+    if (document.body.scrollTop > 128 || document.documentElement.scrollTop > 128) {
+        document.getElementById("vertical_nav").style.position = "fixed";
+		document.getElementById("vertical_nav").style.top = "0px";
+    } else {
+        document.getElementById("vertical_nav").style.position = "absolute";
+		document.getElementById("vertical_nav").style.top = "128px";
+    }
+}
+</script>
+
+<div class="navmargin">
+	<h2>Getting Started in Astronomy</h2>
+	<h3 id="Start">So, you want to try out astronomy as a hobby?</h3>
+	<hr>
+		<p>
+		I quite frequently hear people saying that they would like to "get into astronomy" after I mention 
+		that it is my significantly time-consuming hobby. Mostly, the questions are about the basics which 
+		led to the construction of this guide. This guide will, hopefully, cover the absolute basics that
+		are necessary to get your bearings in astronomy.
+		</p>
+		<p>
+		Before proceeding further, I feel that it is important to mention that there is significantly more 
+		to amateur/hobby astronomy than just "looking at stars". Even with relatively cheap equipment it is 
+		possible to obtain incredible images of the sky or observe planets. Just a pair of high-power 
+		binoculars is usually just enough to make out Jupiter and Saturn if you can hold them steady enough. 
+		As well, if your phone has manual control over the camera and you have an accompanying mount, it is 
+		entirely possible to take pictures of the galactic arm if there is limited light pollution.
+		</p>
+	<h3 id="TheThreeQuestions">The Three Questions</h3>
+	<hr>
+		<p>
+		With all of this being mentioned, I tend to answer three common questions. Since you are the reader, 
+		ask yourself these next three questions if you really are serious about taking on astronomy as a hobby.
+		</p>
+		
+		
+		<h4>What would you like to see?</h4>
+		
+		<p>
+		"Stars..." is a poor answer. You would be bored to tears if that was the only thing you could see in 
+		the night sky. Amateur astronomy can be categorized into two main categories: 
+		<b>observational astronomy</b> and <b>astrophotography</b>.
+		</p>
+		<p>
+		Observational astronomy involves looking directly through the telescope with your eyes; this is 
+		primarily what people think of when they think "astronomy". This is a valid thought; they imagine 
+		a large refracting telescope on a tripod and someone observing through an eyepiece at one end. 
+		Hey, it's not far from the truth, but there is some explaining that needs to be done. The most 
+		common form of observational astronomy is <b>planetary observation</b>. This involves looking at 
+		our close neighboring planets, and since these planets are quite bright, this form of astronomy 
+		is practically immune to light pollution. It probably is the most common form of amateur astronomy 
+		because even just outside a city it is possible to see Jupiter in all of its glory. As well, it is 
+		quite awe-inspiring because for the first time you will see that these planets that you heard of 
+		since kindergarten are <i>actually</i> there! With proper equipment you will see the great red 
+		storm on Jupiter and be able to make out the incredibly flat rings of Saturn (they are only 10m-1km 
+		in thickness)! With a little luck, some planning, and patience it is possible to see moons orbiting 
+		these planets!
+		</p>
+		<p>
+		I would be tarred and feathered by the community if I said that this is the only thing you can do 
+		with observational astronomy. It is also quite popular to observe bright nebulae with proper 
+		filtering under low light pollution settings. This is something that I have not really done; I only 
+		observed Orion Nebula (M42) and Dumbbell Nebula (M27). You will see Orion's very bright core and 
+		Dumbbell will appear as a smoky cloud against background stars. This is something requires more 
+		skill and usually better equipment than just beginner planetary observation. Obviously, planetary 
+		and nebular observation are not the only things that are possible; nothing stops you from trying to 
+		spot comets or try and catch a glimpse of the International Space Station as it passes overhead. 
+		There really is an ocean of possibilities with just observational astronomy.
+		</p>
+		
+		<p>
+		Astrophotography is the other side of the spectrum which involves actually using a camera to take 
+		pictures of objects. This is probably an even broader field than observational astronomy and has 
+		many different types of equipment sets, each for a specific purpose. One of the first, simplest, 
+		and cheapest ways that many get into astrophotography is to take their camera, tripod, and head 
+		out to a dark area and take a long exposure of the night sky. This will produce classic 
+		"star trails" type photographs where the stars are smeared in a circular fashion. Artistic, but 
+		useless if you actually want to get data on an object.
+		</p>
+		
+		<p>
+		There are <i>many</i> sub-categories of astrophotography that cover capturing every possible object 
+		in the sky. Just to name a few so you can starting searching the interwebs for images: solar, 
+		planetary, narrow-band, deep space object (DSO), nebular, comet, wide-field. Speaking of interwebs, 
+		a great resource for exclusively astrophoto images is <a href="www.astrobin.com">Astrobin</a>; it 
+		is somewhat like a GitHub for images. With this out of the way I will proceed to discuss the more 
+		common and cheap astrophotography that you can start with.
+		</p>
+		
+		<p>
+		Planetary astrophotography is very popular and baisically the same equipment that can be used to 
+		observe said planets can also be used to image them with minor to no modifications necessary. Lots 
+		of successful images have been captured by just placing a webcam at the eyepiece! It can also get 
+		more complicated to the point where you can use CH<sub>4</sub> filters to pull out details in 
+		Jupiter's clouds. Planetary astrophotography is a great starting point because you can use your 
+		equipment in a dual-purpose way for both observation and photography.
+		</p>
+		
+		<p>
+		For those hobby photographers reading this, DSLR astrophotography is extremely popular. Pretty much 
+		anything can be imaged with a DSLR given you pick the right telescope to complement the camera. As 
+		stated before, anything from star-trails to deep space object photography is possible with a DSLR. 
+		As I said before, Astrobin is a great resource for determining what targets your equipment can handle 
+		because you can search not only objects but gear used as well. This will allow you to get a good idea 
+		of what your equipment can image.
+		</p>
+		
+		<p>
+		With the above being mentioned, I would like to direct you to an incredibly useful piece of software 
+		called <a href="www.stellarium.org">Stellarium</a>. If you decide to enter astronomy, this will be 
+		your primary source of determining your schedule and selecting targets. As well, you can adjust light 
+		pollution value and set up your equipment in the software to get an idea of how an object will appear.
+		</p>
+		
+		
+		<h4>What is your budget?</h4>
+		<p>
+		Ahh, the important question. I can say with certainty that this is a hobby that is a hole into which 
+		you can keep throwing money and the hole will get bigger, but most bugdets can fit you somewhere into 
+		the astronomy spectrum. Of course, a $1,000 budget compared to a $10,000 budget will force you to make 
+		some compromises. This is a harsh reality that many will face; they would like to try out the hobby, 
+		but are scared to take the plunge due to monetary constraints. If this is the case, then I would 
+		suggest to try and find a local astronomy club or store that have public events (sadly, there aren't 
+		that many) where you can try out multiple types of telescopes and get a better idea of what to expect.
+		</p>
+		
+		<p>
+		To start, I would like to discuss observational astronomy. You can start by just picking up a pair of 
+		binoculars and affixing them to something sturdy and swivelly. This can get you basic views of the 
+		closest planets without much effort. I would suggest buying used telescopes to start because they 
+		will be in good condition due to the fact that people in this hobby are typically quite mindful of 
+		their equipment. Observational astronomy is fairly cheap to enter because of the fact that you do not 
+		need any specialized motorized mount to start. Generally, aperture (the diameter of the primary imaging 
+		element) is king; you need to gather as much light as possible and to resolve details on certain objects. 
+		As well, I would suggest a Dobsonian (a standard Newtonian telescope on an Alt-Az mount) telescope to 
+		begin due to its price to aperture ratio.
+		</p>
+		
+		<p>
+		Moving to astrophotography, this is the more expensive option if you are starting from scratch. This 
+		is also where a general photography hobby will give you an advantage as you can reuse your DSLR camera. 
+		Even if you do not have access to a DSLR camera, you can buy a cheap or used DSLR camera as we don't 
+		really care about fancy-shmancy features like 128 point auto-focus or image-stabilization support 
+		because everything will be done manually. You really only need the camera for the sensor in it. Some 
+		hobbyists just buy the cameras and rip out the sensors for their custom built cameras, but that is a 
+		topic for another day.
+		</p>
+		
+		<p>
+		For those who want to do something other than star trails, you will need a tracking mount to compensate 
+		for the rotation of the Earth. <i>DO NOT GO CHEAP ON THE MOUNT.</i> Allocate no less than half of your 
+		budget on the mount. It is the most important piece of equipment as it will determine the quality of 
+		your images. Additionally, make sure to check the carrying capacity of the mount before you place all 
+		of your equipment on the mount. I would also recommend checking Astrobin before buying something to 
+		determine the quality of the images it takes.
+		</p>
+		
+		<p>
+		You might have noticed that I did not mention any kind of telescope for astrophotography because there 
+		are as many telescope types for astrophotography as there are German and French names. This is something 
+		that depends extremely on the class of objects you wish to image, but if you like you can head over to 
+		<a href="#">Comparison of Telescope Types</a> for my description of common types of telescopes.
+		</p>
+		
+		<h4>Are there any restrictions?</h4>
+		<p>
+		This may seem like a silly question, but it is one that you need to ask yourself nonetheless. If you live 
+		in an apartment in the city 
+		</p>
+</div>
+</body>
+</html>
