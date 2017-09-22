@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../css/pagestyle.css">
+</head>
+<body>
+<h1>alexpn</h1>
+<ul class="ul_h">
+	<li><a href="../index.html">Home</a></li>
+	<li class="dropdown">
+		<a class="dropelement" href="../projects.html">Projects</a>
+		<div class="dropdown-content">
+			<a href="../projects/gem_h.html">German Equatorial Mount (Hardware)</a>
+			<a href="../projects/gem_s.html">German Equatorial Mount (Software)</a>
+			<a href="#">Filter Wheel</a>
+			<a href="#">Peltier Controller</a>
+		</div>
+	</li>
+	<li class="dropdown">
+		<a class="active dropelement" href="../tutorials.html">Guides &amp Tutorials</a>
+		<div class="dropdown-content">
+			<a href="../gettingstarted.html">Getting Started in Astronomy</a>
+			<a href="comparison.html">Comparison of Telescope Types</a>
+		</div>
+	</li>
+	<li><a href="../contact.html">Contact</a></li>
+	<li style="float:right;background-color:#131d3d;"><a href="../gallery.html">Gallery</a></li>
+</ul>
+
+<ul class="ul_v" id="vertical_nav">
+	<li class="vnav"><a href="#Refractor">Refractor</a></li>
+	<li class="vnav"><a href="#Reflector">Reflector</a></li>
+	<li class="vnav"><a href="#Catadioptric">Catadioptric</a></li>
+	<li class="vnav">
+	<button onclick="ListView()">LV</button>
+	<button onclick="ColumnView()">CV</button>
+	</li>
+</ul>
+
+<script>
+window.onscroll = function() {sticknavbar()};
+
+function sticknavbar() {
+    if (document.body.scrollTop > 128 || document.documentElement.scrollTop > 128) {
+		document.getElementById("vertical_nav").style.top = (document.body.scrollTop || document.documentElement.scrollTop)+"px";
+    } else {
+		document.getElementById("vertical_nav").style.top = "128px";
+    }
+}
+
+function ListView() {
+	document.getElementById("content_ul").className = "";
+}
+
+function ColumnView() {
+	document.getElementById("content_ul").className = "ul_c";
+}
+</script>
+
+<div class="navmargin">
+	<h2>Comparison of Telescope Types</h2>
+
+<ul id="content_ul" class="" style="list-style-type: none;">
+	<li>
+	<h3 id="Refractor">Refractor</h3>
+	<hr>
+		<p><b>
+		Magnification Process: Refraction
+		</b></p>
+		<p>
+		Pros:
+		</p>
+		<p><b>
+		Description:
+		</b></p>
+		<p>
+		This is the first thing people think of when they imagine "telescope".
+		</p>
+	</li>
+	<li>
+	<h3 id="Reflector">Reflector</h3>
+	<hr>
+		<p>
+		Magnification Process: Reflection
+		</p>
+		<p>
+		Description: 
+		</p>
+	</li>
+	<li>
+	<h3 id="Catadioptric">Catadioptric</h3>
+	<hr>
+		<p>
+		Magnification Process: Reflection AND Refraction
+		</p>
+		<p>
+		Description: 
+		</p>
+	</li>
+</ul>
+</div>
+</body>
+</html>
