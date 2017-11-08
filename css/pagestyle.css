@@ -27,6 +27,13 @@ p {
 	font-family: arial;
 }
 
+
+ul.list li {
+	float: none;
+	list-style-type: circle;
+}
+
+
 /*column content*/
 ul.ul_c {
 	display: table;
