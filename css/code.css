@@ -1,8 +1,10 @@
 pre.code {
 	border-left: 5px solid #3fa786;
-	display: inline-block;
+	display: block;
 	background: #282b2e;
 	padding: 1em 5em 1em 2em;
+	box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.2);
+	overflow-x: auto;
 }
 
 pre.code:before {
@@ -19,15 +21,31 @@ pre.code code {
 }
 
 pre.code code::before {
-	content: counter(lc) ". ";
+	content: counter(lc, decimal-leading-zero) ". ";
 	text-align: right;
 	color: #aaaaaa;
-	padding-left: auto;
+	padding-right: 0.5em;
 	margin-left: auto;
 }
 
 .keyword {
-	color: #90fa90;
+	color: #8080dc;
+}
+
+.comment {
+	color: #70da70;
+}
+
+.include {
+	color: #da70da;
+}
+
+.char {
+	color: #f24824;
+}
+
+.string {
+	color: #fd7050;
 }
 
 .constant {
