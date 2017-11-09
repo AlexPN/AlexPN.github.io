@@ -1,0 +1,35 @@
+pre.code {
+	border-left: 5px solid #3fa786;
+	display: inline-block;
+	background: #282b2e;
+	padding: 1em 5em 1em 2em;
+}
+
+pre.code:before {
+	counter-reset: lc;
+}
+
+pre.code code {
+	counter-increment: lc;
+	font: normal 10pt Consolas, Monaco, monospace;
+	display: inline-block;
+	overflow-x: auto;
+	color: #bccada;
+	padding-left: auto;
+}
+
+pre.code code::before {
+	content: counter(lc) ". ";
+	text-align: right;
+	color: #aaaaaa;
+	padding-left: auto;
+	margin-left: auto;
+}
+
+.keyword {
+	color: #90fa90;
+}
+
+.constant {
+	color: #fa9090;
+}
