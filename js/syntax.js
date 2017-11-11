@@ -1,5 +1,7 @@
 var keywords = ["module","endmodule","assign","input","output","wire","reg","logic","for","return","if",
-				"int","long","short","float","double","bool","char","struct","union","do","while","new"];
+				"int","long","short","float","double","bool","char","struct","union","do","while","new",
+				"always_ff","always_comb","always","var","function","else","typedef","case","continue",
+				"break","void","size_t","unsigned"];
 			
 window.onload = function main() {
 	var ListOfCodeBlocks = document.getElementsByClassName("code");
@@ -86,10 +88,13 @@ function Highlight(str) {
 		}
 		
 		for (n = 0; n < keywords.length; n++) {
-			if (tokens[k].trim().indexOf(keywords[n]) == 0) {
-				var regex = new RegExp(keywords[n],'g');
-				s0 = tokens[k].replace(regex,'<span class=\"keyword\">$&</span>');
-				break;
+			if (tokens[k].trim().indexOf(keywords[n]) != -1) {
+				var regex = new RegExp("(?:^|[^a-zA-Z0-9_])" + keywords[n] + "(?![a-zA-Z0-9])",'g');
+				console.log(tokens[k].trim() + " : " + regex + " : " + regex.exec(tokens[k]));
+				if (regex.test(tokens[k])) {
+					s0 = tokens[k].replace(regex,'<span class=\"keyword\">$&</span>');
+					break;
+				}
 			}
 		}
 		

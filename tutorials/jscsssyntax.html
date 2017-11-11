@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../css/pagestyle.css">
+<link rel="stylesheet" type="text/css" href="../css/code.css">
+</head>
+<body>
+<h1>alexpn</h1>
+<ul class="ul_h">
+	<li><a href="index.html">Home</a></li>
+	<li class="dropdown">
+		<a class="dropelement" href="projects.html">Projects</a>
+		<div class="dropdown-content">
+			<a href="../projects/gem_h.html">German Equatorial Mount (Hardware)</a>
+			<a href="../projects/gem_s.html">German Equatorial Mount (Software)</a>
+			<a href="#">Filter Wheel</a>
+			<a href="#">Peltier Controller</a>
+		</div>
+	</li>
+	<li class="active dropdown">
+		<a class="dropelement" href="tutorials.html">Guides &amp Tutorials</a>
+		<div class="dropdown-content">
+			<a href="gettingstarted.html">Getting Started in Astronomy</a>
+			<a href="comparison.html">Comparison of Telescope Types</a>
+			<a href="jscsssyntax.html">JS/CSS Syntax Highlighting</a>
+		</div>
+	</li>
+	<li><a href="contact.html">Contact</a></li>
+	<li style="float:right;background-color:#131d3d;"><a href="gallery.html">Gallery</a></li>
+</ul>
+
+<ul class="ul_v" id="vertical_nav">
+	<li class="vnav"><a href="#">(wip)</a></li>
+</ul>
+
+<script src="../js/floatingnav.js"></script>
+<script src="../js/syntax.js"></script>
+
+<div class="navmargin">
+	<h2>JS/CSS Simple Code Block Styling and Syntax Highlight</h2>
+	<hr>
+	<p>
+	During my process of building this site,
+	</p>
+	
+	<pre>
+	<code>
+#include <stddef.h>
+#include <stdio.h>
+#include "sorting.h"
+
+void siftdown(int * a, int start, int end) {
+	for (;;) {
+		int child = 2*start + 1;
+		if (child > end) {
+			//root has no children, already at end
+			break;
+		}
+	
+		int max = start;
+		if (a[child] > a[max]) {
+			//left child is greater
+			max = child;
+		}
+		if (child+1 <= end) {
+			if (a[child+1] > a[max]) {
+				//right child is greater
+				max = child+1;
+			}
+		}
+		
+		if (max == start) {
+			//root is the largest, we are done
+			break;
+		}
+		else {
+			int temp = a[start];
+			a[start] = a[max];
+			a[max] = temp;
+			start = max;
+		}
+	}
+}
+
+void makeheap(int * a, int size) {
+	int start = ((size-1)-1)/2;
+	for (;;) {
+		if (start < 0) {
+			break;
+		}
+		siftdown(a, start, (size-1));
+		start--;
+	}
+}
+
+void heapsort(int * a, size_t size) {
+	makeheap(a,(int)size);
+	int end = size - 1;
+	for(;;) {
+		if (end <= 0) {
+			break;
+		}
+		int temp = a[end];
+		a[end] = a[0];
+		a[0] = temp;
+		end--;
+		siftdown(a,0,end);
+	}
+}
+	<code>
+	</pre>
+	
+	<p>
+	To something much more readable:
+	</p>
+	
+	<pre class="code">
+#include <stddef.h>
+#include <stdio.h>
+#include "sorting.h"
+
+void siftdown(int * a, int start, int end) {
+	for (;;) {
+		int child = 2*start + 1;
+		if (child > end) {
+			//root has no children, already at end
+			break;
+		}
+	
+		int max = start;
+		if (a[child] > a[max]) {
+			//left child is greater
+			max = child;
+		}
+		if (child+1 <= end) {
+			if (a[child+1] > a[max]) {
+				//right child is greater
+				max = child+1;
+			}
+		}
+		
+		if (max == start) {
+			//root is the largest, we are done
+			break;
+		}
+		else {
+			int temp = a[start];
+			a[start] = a[max];
+			a[max] = temp;
+			start = max;
+		}
+	}
+}
+
+void makeheap(int * a, int size) {
+	int start = ((size-1)-1)/2;
+	for (;;) {
+		if (start < 0) {
+			break;
+		}
+		siftdown(a, start, (size-1));
+		start--;
+	}
+}
+
+void heapsort(int * a, size_t size) {
+	makeheap(a,(int)size);
+	int end = size - 1;
+	for(;;) {
+		if (end <= 0) {
+			break;
+		}
+		int temp = a[end];
+		a[end] = a[0];
+		a[0] = temp;
+		end--;
+		siftdown(a,0,end);
+	}
+}
+
+someint
+def_int
+def_int99
+	</pre>
+
+</div>
