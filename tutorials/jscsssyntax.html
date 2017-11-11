@@ -31,7 +31,7 @@
 </ul>
 
 <ul class="ul_v" id="vertical_nav">
-	<li class="vnav"><a href="#">(wip)</a></li>
+	<li class="vnav"><a href="#Styling">The Styling</a></li>
 </ul>
 
 <script src="../js/floatingnav.js"></script>
@@ -41,7 +41,8 @@
 	<h2>JS/CSS Simple Code Block Styling and Syntax Highlight</h2>
 	<hr>
 	<p>
-	During my process of building this site,
+	During my process of building this site, I needed syntax highlighting for code blocks. Although there are many available syntax highlighters online (e.g. highlight.js), I decided instead to make a very lightweight version.
+	As usual, there is something to learn, but the goal is to convert this default, ugly code HTML code block:
 	</p>
 	
 	<pre>
@@ -61,7 +62,7 @@ void main(){
 
 	printf("out: %c %s %d\n",c,s,ten);
 }
-	<code>
+	</code>
 	</pre>
 	
 	<p>
@@ -85,5 +86,18 @@ void main(){
 	printf("out: %c %s %d\n",c,s,ten);
 }
 	</pre>
+
+<h3 id="Styling">The Styling</h3>
+<hr>
+	<p>
+	We would like to add the following to the element in general:
+	</p>
+	<ul class="list">
+		<li><p>Visual separator from other content. In my case, I chose a different color for the block and a drop shadow.</p></li>
+		<li><p>Line numbers.</p></li>
+		<li><p>Monospaced font.</p></li>
+		<li><p>No word-wrap, but horizontal scrolling with a dynamic scroll-bar.</p></li>
+	</ul>
+
 
 </div>
