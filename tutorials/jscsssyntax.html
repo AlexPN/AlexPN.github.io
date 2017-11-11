@@ -46,67 +46,20 @@
 	
 	<pre>
 	<code>
-#include <stddef.h>
 #include <stdio.h>
-#include "sorting.h"
+#include <string.h>
 
-void siftdown(int * a, int start, int end) {
-	for (;;) {
-		int child = 2*start + 1;
-		if (child > end) {
-			//root has no children, already at end
-			break;
-		}
-	
-		int max = start;
-		if (a[child] > a[max]) {
-			//left child is greater
-			max = child;
-		}
-		if (child+1 <= end) {
-			if (a[child+1] > a[max]) {
-				//right child is greater
-				max = child+1;
-			}
-		}
-		
-		if (max == start) {
-			//root is the largest, we are done
-			break;
-		}
-		else {
-			int temp = a[start];
-			a[start] = a[max];
-			a[max] = temp;
-			start = max;
-		}
-	}
-}
+//program entry
+void main(){
 
-void makeheap(int * a, int size) {
-	int start = ((size-1)-1)/2;
-	for (;;) {
-		if (start < 0) {
-			break;
-		}
-		siftdown(a, start, (size-1));
-		start--;
-	}
-}
 
-void heapsort(int * a, size_t size) {
-	makeheap(a,(int)size);
-	int end = size - 1;
-	for(;;) {
-		if (end <= 0) {
-			break;
-		}
-		int temp = a[end];
-		a[end] = a[0];
-		a[0] = temp;
-		end--;
-		siftdown(a,0,end);
-	}
+	char c = 'y';
+	char * s = "hello";
+	int ten = 10;
+	/*using, printf,
+	print the above*/
+
+	printf("out: %c %s %d\n",c,s,ten);
 }
 	<code>
 	</pre>
@@ -116,72 +69,21 @@ void heapsort(int * a, size_t size) {
 	</p>
 	
 	<pre class="code">
-#include <stddef.h>
 #include <stdio.h>
-#include "sorting.h"
+#include <string.h>
 
-void siftdown(int * a, int start, int end) {
-	for (;;) {
-		int child = 2*start + 1;
-		if (child > end) {
-			//root has no children, already at end
-			break;
-		}
-	
-		int max = start;
-		if (a[child] > a[max]) {
-			//left child is greater
-			max = child;
-		}
-		if (child+1 <= end) {
-			if (a[child+1] > a[max]) {
-				//right child is greater
-				max = child+1;
-			}
-		}
-		
-		if (max == start) {
-			//root is the largest, we are done
-			break;
-		}
-		else {
-			int temp = a[start];
-			a[start] = a[max];
-			a[max] = temp;
-			start = max;
-		}
-	}
+//program entry
+void main(){
+
+
+	char c = 'y';
+	char * s = "hello";
+	int ten = 10;
+	/*using, printf,
+	print the above*/
+
+	printf("out: %c %s %d\n",c,s,ten);
 }
-
-void makeheap(int * a, int size) {
-	int start = ((size-1)-1)/2;
-	for (;;) {
-		if (start < 0) {
-			break;
-		}
-		siftdown(a, start, (size-1));
-		start--;
-	}
-}
-
-void heapsort(int * a, size_t size) {
-	makeheap(a,(int)size);
-	int end = size - 1;
-	for(;;) {
-		if (end <= 0) {
-			break;
-		}
-		int temp = a[end];
-		a[end] = a[0];
-		a[0] = temp;
-		end--;
-		siftdown(a,0,end);
-	}
-}
-
-someint
-def_int
-def_int99
 	</pre>
 
 </div>

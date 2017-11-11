@@ -29,7 +29,7 @@ pre.code code::before {
 }
 
 .keyword {
-	color: #8080dc;
+	color: #8080fc;
 }
 
 .comment {
@@ -50,4 +50,9 @@ pre.code code::before {
 
 .constant {
 	color: #fa9090;
+}
+
+.bracket {
+	color: #0aabbf;
+	font-weight: bold;
 }

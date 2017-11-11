@@ -89,16 +89,17 @@ function Highlight(str) {
 		
 		for (n = 0; n < keywords.length; n++) {
 			if (tokens[k].trim().indexOf(keywords[n]) != -1) {
-				var regex = new RegExp("(?:^|[^a-zA-Z0-9_])" + keywords[n] + "(?![a-zA-Z0-9])",'g');
-				console.log(tokens[k].trim() + " : " + regex + " : " + regex.exec(tokens[k]));
+				var regex = new RegExp("(^|[^a-zA-Z0-9_])(" + keywords[n] + ")(?![a-zA-Z0-9])",'g');
+				//var regkey = new RegExp(keywords[n],'g');
+				//console.log(tokens[k].trim() + " : " + regex + " : " + regkey.exec(regex.exec(tokens[k])));
 				if (regex.test(tokens[k])) {
-					s0 = tokens[k].replace(regex,'<span class=\"keyword\">$&</span>');
+					s0 = tokens[k].replace(regex,'$1<span class=\"keyword\">$2</span>');
 					break;
 				}
 			}
 		}
 		
-		output = output + s0.replace(/([0-9]+)/g, '<span class=\"constant\">$&</span>').replace(/\'[\x00-\x7F]+\'/g, '<span class=\"char\">$&</span>');
+		output = output + s0.replace(/(^|[^a-zA-Z0-9_])([0-9]+)(?!')/g, '$1<span class=\"constant\">$2</span>').replace(/(^|[^'])([\[\]]+)(?!')/g,'$1<span class=\"bracket\">$2</span>').replace(/\'[\x00-\x7F]+\'/g, '<span class=\"char\">$&</span>');
 		if (k < tokens.length-1) {
 			//don't add space if it is the only/last token
 			output = output + " ";
