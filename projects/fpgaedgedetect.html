@@ -42,6 +42,7 @@
 <ul class="ul_v" id="vertical_nav">
 	<li class="vnav"><a href="#Sobel">Sobel Operator</a></li>
 	<li class="vnav"><a href="#Laplace">Laplace Operator</a></li>
+	<li class="vnav"><a href="#HardwareConsiderations">Hardware Considerations</a></li>
 </ul>
 
 <script src="../js/floatingnav.js"></script>
@@ -72,7 +73,7 @@ both operate on 3x3 pixel grids.
 <hr>
 
 <p>
-The Sobel operator quite simply approximates the derivates in the x and y direction of the source image.
+The Sobel matrix quite simply approximates the derivates in the x and y direction of the source image.
 </p>
 <p>
 The x direction matrix is defined as: 
@@ -105,15 +106,22 @@ $
 <img src="../images/sobel.jpg" width="512">
 <img src="../images/sobel_bin.jpg" width="512">
 
+<p>
+The Sobel matrix performs quite well, and it highlights the edges we expect it to highlight. For example, the hoverfly on the flower 
+has its legs and eyes clearly outlined by this operation; the flower itself is also highlighted around the perimeter where there is 
+a large contrast change.
+</p>
+
+
 <h3 id="Laplace">Laplace</h3>
 <hr>
 <p>
-Laplace operator is also a form of edge detection, but it estimates the second derivative. This is theoretically much more precise and 
+Laplace matrix is also a form of edge detection, but it estimates the second derivative. This is theoretically much more precise and 
 accurate than a simple first derivative approximation. Although, it all sounds great on paper, this operator is easily distorted by image 
 noise as seen in the example images below.
 </p>
 <p>
-The Laplace operator is defined as: 
+The Laplace matrix is defined as: 
 $
 \begin{split}\left[\begin{array}{ccc}
 0 & -1 & 0 \\
@@ -125,8 +133,43 @@ $
 <img src="../images/laplace.jpg" width="512">
 <img src="../images/laplace_bin.jpg" width="512">
 
-<h3></h3>
+<p>
+There is also a version of the matrix that includes the diagonals into the approximation: 
+$
+\begin{split}\left[\begin{array}{ccc}
+-1 & -1 & -1 \\
+-1 & 8 & -1 \\
+-1 & -1 & -1
+\end{array}\right]\end{split}
+$
+</p>
+<img src="../images/laplace_v2.jpg" width="512">
+<img src="../images/laplace_v2_bin.jpg" width="512">
+
+<h3 id="HardwareConsiderations">Hardware Considerations</h3>
 <hr>
+
+<p>
+Now here is the fun part. There is no way we can make the system can work at the speeds needed if the hardware is designed without 
+thought. First of all, most images are reliably within 8-16 bits of color depth per pixel; if the image is destined to be displayed 
+onto a screen, then it is typically 8-10 bits only. As an example, performing the Sobel matrix operation on an 8bit (RGB) image results in 
+38 multiplications, 11 additions, and 1 square root (all have to support 8bit depth). Let's think. Is there something about the matrices 
+that stands out? Well, there should be. If you noticed, all the matrix entries are <i>powers of two</i>! This means that we can shift 
+the bits (essentially a free operation) instead of multiplication. This brings the tally down to only 2 multiplications instead of 38! 
+The reason why we can't avoid the last two multiplications because we need to compute the final magnitude of the pixel which uses the formula:
+</p>
+
+<p>
+$
+Pixel Magnitude = \sqrt{XMag^{2} + YMag^{2}}
+$
+, luckily these two multiplications can be done in parallel at the cost of extra surface area.
+</p>
+
+<p>
+On the other hand, Laplace now appears as a great alternative because there is no multiplication or square roots involved in the approximation. 
+All we need to do is perform just <i>one</i> bitshift to the center pixel value and process 8 additions.
+</p>
 
 <pre class="code">
 //Full adder in SystemVerilog
