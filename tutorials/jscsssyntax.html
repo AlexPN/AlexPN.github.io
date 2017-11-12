@@ -99,5 +99,72 @@ void main(){
 		<li><p>No word-wrap, but horizontal scrolling with a dynamic scroll-bar.</p></li>
 	</ul>
 
+<h5>Creating the Visual Separation</h5>
+	<p>
+	We will start with a CSS template that will change thhe appearance of &ltpre&gt tags that are part of a named class. To start, just change the background color of &ltpre&gt wrapped data and change any text that is within
+	a &ltcode&gt tag within a &ltpre&gt tag.
+	</p>
 
+	<pre style="display:block;background:#282b2e;">
+	<code style="color:#bccada;">
+pre.code {
+        display: block;
+	background: #282b2e;
+}
+
+pre.code code {
+	color: #bccada;
+}
+	</code>
+	</pre>
+
+	<p>
+	It still looks blandish... so, let's add some padding to the inner text and a drop shadow. Also, let's make the code font monospaced and easier to read.
+	</p>
+
+	<pre style="display:block;background:#282b2e;padding: 1em 5em 1em 2em;box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.2);">
+	<code style="color:#bccada;font: normal 10pt Consolas, monospace;">
+pre.code {
+        display: block;
+	background: #282b2e;
+        padding: 1em 5em 1em 2em;
+        box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.2);
+}
+
+pre.code code {
+	color: #bccada;
+	font: normal 10pt Consolas, monospace;
+}
+	</code>
+	</pre>
+
+
+<h5>The Horizontal Scroll Bar</h5>
+	<p>
+	Now you can notice that if you resize your window that the inner text just spills out of the block. We need to add a horizontal scroll bar that only appears when needed. Luckily, there is a CSS parameter called 
+	<code>overflow-x</code> that can be set to auto to make this happen.
+	</p>
+
+	<pre style="display:block;background:#282b2e;padding: 1em 5em 1em 2em;box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.2);overflow-x:auto;">
+	<code style="color:#bccada;font: normal 10pt Consolas, monospace;">
+pre.code {
+        display: block;
+	background: #282b2e;
+        padding: 1em 5em 1em 2em;
+        box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.2);
+	overflow-x: auto;
+}
+
+pre.code code {
+	color: #bccada;
+	font: normal 10pt Consolas, monospace;
+}
+	</code>
+	</pre>
+
+<h5>Line Numbers</h5>
+	<p>
+	Adding line numbers to the block is trickier as we need to make use of counters. The way a counter works is that you set an identifier on which the counter will reset (e.g. &ltpre&gt), an identifier on which to increment 
+	(e.g. &ltcode&gt), and an identifier on which to display. As well, wee will need to use <code>:before</code> commands in CSS to display the line numbers before each element.
+	</p>
 </div>

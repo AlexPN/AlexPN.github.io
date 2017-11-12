@@ -13,9 +13,8 @@ pre.code:before {
 
 pre.code code {
 	counter-increment: lc;
-	font: normal 10pt Consolas, Monaco, monospace;
+	font: normal 10pt Consolas, monospace;
 	display: inline-block;
-	overflow-x: auto;
 	color: #bccada;
 	padding-left: auto;
 }
