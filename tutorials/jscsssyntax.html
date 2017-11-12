@@ -19,15 +19,15 @@
 		</div>
 	</li>
 	<li class="active dropdown">
-		<a class="dropelement" href="tutorials.html">Guides &amp Tutorials</a>
+		<a class="dropelement" href="../tutorials.html">Guides &amp Tutorials</a>
 		<div class="dropdown-content">
 			<a href="gettingstarted.html">Getting Started in Astronomy</a>
 			<a href="comparison.html">Comparison of Telescope Types</a>
 			<a href="jscsssyntax.html">JS/CSS Syntax Highlighting</a>
 		</div>
 	</li>
-	<li><a href="contact.html">Contact</a></li>
-	<li style="float:right;background-color:#131d3d;"><a href="gallery.html">Gallery</a></li>
+	<li><a href="../contact.html">Contact</a></li>
+	<li style="float:right;background-color:#131d3d;"><a href="../gallery.html">Gallery</a></li>
 </ul>
 
 <ul class="ul_v" id="vertical_nav">
@@ -165,6 +165,7 @@ pre.code code {
 <h5>Line Numbers</h5>
 	<p>
 	Adding line numbers to the block is trickier as we need to make use of counters. The way a counter works is that you set an identifier on which the counter will reset (e.g. &ltpre&gt), an identifier on which to increment 
-	(e.g. &ltcode&gt), and an identifier on which to display. As well, wee will need to use <code>:before</code> commands in CSS to display the line numbers before each element.
+	(e.g. &ltcode&gt), and an identifier on which to display. As well, wee will need to use <code>:before</code> commands in CSS to display the line numbers before each element. This means that each line would have to wrapped 
+	with a either &ltspan&gt or &ltcode&gt.
 	</p>
 </div>
