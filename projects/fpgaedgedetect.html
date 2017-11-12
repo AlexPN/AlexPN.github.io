@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="../css/pagestyle.css">
+<link rel="stylesheet" type="text/css" href="../css/code.css">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+<h1>alexpn</h1>
+<ul class="ul_h">
+	<li><a href="../index.html">Home</a></li>
+	<li class="active dropdown">
+		<a class="dropelement" href="../projects.html">Projects</a>
+		<div class="dropdown-content">
+			<a href="gem_h.html">German Equatorial Mount (Hardware)</a>
+			<a href="fpgaedgedetect.html">FPGA Edge Detection</a>
+<!--
+			<a href="gem_s.html">German Equatorial Mount (Software)</a>
+			<a href="#">Filter Wheel</a>
+			<a href="#">Peltier Controller</a>
+-->
+		</div>
+	</li>
+	<li class="dropdown">
+		<a class="dropelement" href="../tutorials.html">Guides &amp Tutorials</a>
+		<div class="dropdown-content">
+			<a href="../tutorials/gettingstarted.html">Getting Started in Astronomy</a>
+			<a href="../tutorials/comparison.html">Comparison of Telescope Types</a>
+			<a href="../tutorials/jscsssyntax.html">JS/CSS Syntax Highlighting</a>
+		</div>
+	</li>
+	<li><a href="../contact.html">Contact</a></li>
+	<li style="float:right;background-color:#131d3d;"><a href="../gallery.html">Gallery</a></li>
+</ul>
+
+<ul class="ul_v" id="vertical_nav">
+	<li class="vnav"><a href="#Sobel">Sobel Operator</a></li>
+	<li class="vnav"><a href="#Laplace">Laplace Operator</a></li>
+</ul>
+
+<script src="../js/floatingnav.js"></script>
+<script src="../js/syntax.js"></script>
+
+<div class="navmargin">
+<h2>FPGA Edge Detection</h2>
+<hr>
+<p>
+<b>Why do edge detection on an FPGA?</b>
+</p>
+<p>
+In a time sensitive application, only an FPGA can perform the calculations at the necessary speed. This can be applied to autonomous vehicles 
+for object detection or realtime post processing applications.
+</p>
+
+<p>
+<b>How do you define an edge in a discrete set of points?</b>
+</p>
+<p>
+The best thing possible is to guess if a pixel is an edge by comparing it to its neighbors.
+A simple way is to set a threshold on the rate of change between one pixel and its neighbor. This exists in the form of a convolution. There are 
+several types of edge detection convolutions that exist to perform the operation; the two most common are the Sobel and Laplace operators which 
+both operate on 3x3 pixel grids.
+</p>
+
+<h3 id="Sobel">Sobel</h3>
+<hr>
+
+<p>
+The Sobel operator quite simply approximates the derivates in the x and y direction of the source image.
+</p>
+<p>
+The x direction matrix is defined as: 
+$
+\begin{split}\left[\begin{array}{ccc}
+1 & 2 & 1 \\
+0 & 0 & 0 \\
+-1 & -2 & -1
+\end{array}\right]\end{split}
+$
+</p>
+<p>
+The y direction matrix is defined as: 
+$
+\begin{split}\left[\begin{array}{ccc}
+1 & 0 & -1 \\
+2 & 0 & -2 \\
+1 & 0 & -1
+\end{array}\right]\end{split}
+$
+</p>
+
+<p>As an example, let's apply both matrices to this test image:</p>
+<img src="../images/test_L.jpg" width="512">
+<p>Applying the x direction matrix:</p>
+<img src="../images/sobel_x.jpg" width="512">
+<p>Applying the y direction matrix:</p>
+<img src="../images/sobel_y.jpg" width="512">
+<p>Combined, this results in the following image and a threshold can be established to obtain outlines:</p>
+<img src="../images/sobel.jpg" width="512">
+<img src="../images/sobel_bin.jpg" width="512">
+
+<h3 id="Laplace">Laplace</h3>
+<hr>
+<p>
+Laplace operator is also a form of edge detection, but it estimates the second derivative. This is theoretically much more precise and 
+accurate than a simple first derivative approximation. Although, it all sounds great on paper, this operator is easily distorted by image 
+noise as seen in the example images below.
+</p>
+<p>
+The Laplace operator is defined as: 
+$
+\begin{split}\left[\begin{array}{ccc}
+0 & -1 & 0 \\
+-1 & 4 & -1 \\
+0 & -1 & 0
+\end{array}\right]\end{split}
+$
+</p>
+<img src="../images/laplace.jpg" width="512">
+<img src="../images/laplace_bin.jpg" width="512">
+
+<h3></h3>
+<hr>
+
+<pre class="code">
+//Full adder in SystemVerilog
+module FA(
+	input A,
+	input B,
+	input Cin,
+	output S,
+	output Cout);
+
+	always_ff @(posedge clk)
+	wire y = '0101;/*1bit addition with
+	carry-in and carry-out*/
+	assign {Cout, S} = A + B + Cin;	
+endmodule
+</pre>
+	
+</div>
+</body>
+</html>
