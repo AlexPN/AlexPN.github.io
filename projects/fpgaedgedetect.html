@@ -40,9 +40,10 @@
 </ul>
 
 <ul class="ul_v" id="vertical_nav">
-	<li class="vnav"><a href="#Sobel">Sobel Operator</a></li>
-	<li class="vnav"><a href="#Laplace">Laplace Operator</a></li>
+	<li class="vnav"><a href="#Sobel">Sobel Matrix</a></li>
+	<li class="vnav"><a href="#Laplace">Laplace Matrix</a></li>
 	<li class="vnav"><a href="#HardwareConsiderations">Hardware Considerations</a></li>
+	<li class="vnav"><a href="#LaplaceImplementation">Laplace Implementation</a></li>
 </ul>
 
 <script src="../js/floatingnav.js"></script>
@@ -163,14 +164,74 @@ The reason why we can't avoid the last two multiplications because we need to co
 $
 Pixel Magnitude = \sqrt{XMag^{2} + YMag^{2}}
 $
-, luckily these two multiplications can be done in parallel at the cost of extra surface area.
+, luckily these two multiplications can be done in parallel at the cost of extra logic gates.
 </p>
 
 <p>
 On the other hand, Laplace now appears as a great alternative because there is no multiplication or square roots involved in the approximation. 
-All we need to do is perform just <i>one</i> bitshift to the center pixel value and process 8 additions.
+All we need to do is perform just <i>one</i> bitshift to the center pixel value and process 8 additions (for the diagonal inclusive one).
 </p>
 
+<p>
+Now let's take a look at the general system overview that will be implemented:
+</p>
+
+<!--<img src="../images/.jpg" width=762>-->
+
+<p>
+To make computations easier, the matrices will be stored in $\log_{2}$ format. This way, we can just read the value in the matrix and apply 
+it directly as a bitshift.
+</p>
+<p>
+The Sobel matrices become:
+$
+\begin{split}\left[\begin{array}{ccc}
+0' & 1' & 0' \\
+0 & 0 & 0 \\
+-0' & -1' & -0'
+\end{array}\right]\end{split}
+$
+
+$
+\begin{split}\left[\begin{array}{ccc}
+0' & 0 & -0' \\
+1' & 0 & -1' \\
+0' & 0 & -0'
+\end{array}\right]\end{split}
+$
+
+The $'$ represents the values we care about. As well, we have to preserve the sign, even if there is no bitshift.
+</p>
+
+<p>
+The Laplace matrices become:
+$
+\begin{split}\left[\begin{array}{ccc}
+0 & -0' & 0 \\
+-0' & 2' & -0' \\
+0 & -0' & 0
+\end{array}\right]\end{split}
+$
+
+and 
+
+$
+\begin{split}\left[\begin{array}{ccc}
+-0' & -0' & -0' \\
+-0' & 3' & -0' \\
+-0' & -0' & -0'
+\end{array}\right]\end{split}
+$
+
+
+</p>
+
+
+<p>
+We can also make some modules that we will use later.
+</p>
+
+<h5>1Bit Full Adder</h5>
 <pre class="code">
 //Full adder in SystemVerilog
 module FA(
@@ -180,13 +241,48 @@ module FA(
 	output S,
 	output Cout);
 
-	always_ff @(posedge clk)
-	wire y = '0101;/*1bit addition with
-	carry-in and carry-out*/
 	assign {Cout, S} = A + B + Cin;	
 endmodule
 </pre>
-	
+
+
+
+<h3 id="LaplaceImplementation">Laplace FPGA Implementation</h3>
+<hr>
+
+<p>
+Laplace is straightforward to implement on an FPGA, so let's start with it first. The logic needs to be as parallelized as possible; some of the matrix additions can be performed in parallel. 
+The additions will be performed in this order, where $L$ is the Laplace matrix and $+_{n}$ represents an $n$bit full adder:
+</p>
+
+<ul class="list">
+	<li>
+	<p>
+	$	
+		L_{0,0} +_{8} L_{0,1} \Rightarrow L_{0};
+		L_{0,2} +_{8} L_{1,2} \Rightarrow L_{1};
+		L_{1,0} +_{8} L_{2,0} \Rightarrow L_{2};
+		L_{2,1} +_{8} L_{2,2} \Rightarrow L_{3}
+	$
+	</p>
+	</li>
+	<li>
+	<p>
+	$
+		L_{0} +_{9} L_{1} \Rightarrow L_{A};
+		L_{2} +_{9} L_{3} \Rightarrow L_{B}
+	$
+	</p>
+	</li>
+	<li>
+	<p>
+	$
+		(L_{A} +_{10} L_{B}) +_{11} (L_{1,1} &lt&lt k) \Rightarrow Pixel Value
+	$
+	</p>
+	</li>
+</ul>
+
 </div>
 </body>
 </html>
