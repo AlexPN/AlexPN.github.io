@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/>
+<meta name="width=device-width" charset="utf-8">
 <link rel="stylesheet" type="text/css" href="css/pagestyle.css">
 </head>
 <body>
@@ -32,8 +32,32 @@
 	<li class="active" style="float:right;background-color:#131d3d;"><a href="gallery.html">Gallery</a></li>
 </ul>
 
+<script src="js/gallery.js"></script>
+
+<div id="gallery_fs" class="gallery_fs_bg">
+	<span class="gallery_fs_close" onclick="GalleryFSClose()">&times;</span>
+	<span class="gallery_fs_rev" onclick="GalleryFSPrev()">&#10094;</span>
+	<span class="gallery_fs_fwd" onclick="GalleryFSNext()">&#10095;</span>
+	
+	<div class="gallery_fs_bg-content">
+
+		<img class="gallery_fs_img" src="images/dumbbell.jpg">
+
+		<img class="gallery_fs_img" src="images/orion.jpg">
+
+		<img class="gallery_fs_img" src="images/jupiter.jpg">
+
+		<img class="gallery_fs_img" src="images/macro_01.jpg">
+	
+		<div>
+			<p id="GalleryFSCaption" class="gallery_fs_caption"></p>
+		</div>
+	</div>
+	
+</div>
+
 <div class="tooltip gallery">
-	<a href="images/dumbbell.jpg">
+	<a onclick="GalleryFSOpen();GalleryFSCImg(0)">
 		<img src="images/thumbnails/dumbbell.jpg" width="256">
 	</a>
 	<div class="title">Dumbbell Nebula (M27)</div>
@@ -41,7 +65,7 @@
 </div>
 
 <div class="tooltip gallery">
-	<a href="images/orion.jpg">
+	<a onclick="GalleryFSOpen();GalleryFSCImg(1)">
 		<img src="images/thumbnails/orion.jpg" width="256">
 	</a>
 	<div class="title">Orion Nebula (M42)</div>
@@ -49,7 +73,7 @@
 </div>
 
 <div class="tooltip gallery">
-	<a href="images/jupiter.jpg">
+	<a onclick="GalleryFSOpen();GalleryFSCImg(2)">
 		<img src="images/thumbnails/jupiter.jpg" width="256">
 	</a>
 	<div class="title">Jupiter</div>
@@ -57,7 +81,7 @@
 </div>
 
 <div class="tooltip gallery">
-	<a href="images/macro_01.jpg">
+	<a onclick="GalleryFSOpen();GalleryFSCImg(3)">
 		<img src="images/thumbnails/macro_01.jpg" width="256">
 	</a>
 	<div class="title">Hoverfly on Flower</div>
